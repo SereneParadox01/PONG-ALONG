@@ -1,4 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://1f5y62itc732"]
+[gd_scene load_steps=7 format=3 uid="uid://1f5y62itc732"]
+
+[ext_resource type="Texture2D" uid="uid://d1ftgfclr3vhy" path="res://paddle.png" id="1_fi62q"]
+[ext_resource type="Script" uid="uid://c57osclso1tjb" path="res://Ball.cs" id="1_jq6gy"]
+[ext_resource type="Texture2D" uid="uid://buqjkfj38vnv3" path="res://ball.png" id="3_rlx2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rj4so"]
 size = Vector2(38, 233)
@@ -16,17 +20,30 @@ position = Vector2(300, 400)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Paddle"]
 shape = SubResource("RectangleShape2D_rj4so")
 
+[node name="Sprite2D" type="Sprite2D" parent="Left Paddle"]
+scale = Vector2(8, 8)
+texture = ExtResource("1_fi62q")
+
 [node name="RIght Paddle" type="CharacterBody2D" parent="."]
 position = Vector2(1500, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RIght Paddle"]
 shape = SubResource("RectangleShape2D_rj4so")
 
+[node name="Sprite2D" type="Sprite2D" parent="RIght Paddle"]
+scale = Vector2(8, 8)
+texture = ExtResource("1_fi62q")
+
 [node name="Ball" type="CharacterBody2D" parent="."]
 position = Vector2(800, 400)
+script = ExtResource("1_jq6gy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("CircleShape2D_jq6gy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(5, 5)
+texture = ExtResource("3_rlx2o")
 
 [node name="Top Border" type="StaticBody2D" parent="."]
 position = Vector2(800, 0)
@@ -39,3 +56,7 @@ position = Vector2(800, 800)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Border"]
 shape = SubResource("RectangleShape2D_o3cl4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(800, 400)
+zoom = Vector2(0.75, 0.75)
